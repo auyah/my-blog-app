@@ -94,6 +94,10 @@ export default {
         console.error('Failed to like post:', error);
       }
     };
+    // 在 App.vue 中添加跳转逻辑
+    const goToComment = (postId) => {
+      router.push({ name: 'Comment', params: { postId } });
+    };
 
     const handleLoginSuccess = (userId) => {
       loggedIn.value = true;

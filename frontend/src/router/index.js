@@ -1,7 +1,8 @@
+// router/index.js
 import { createRouter, createWebHistory } from 'vue-router';
 import Home from '../views/Home.vue';
-import About from '../views/About.vue';
 import Post from '../views/Post.vue';
+import Comment from '../views/Comment.vue'; // 假设评论界面组件
 
 const routes = [
   {
@@ -10,19 +11,19 @@ const routes = [
     component: Home
   },
   {
-    path: '/about',
-    name: 'About',
-    component: About
-  },
-  {
     path: '/post/:id',
     name: 'Post',
     component: Post
+  },
+  {
+    path: '/comment/:postId', // 评论界面路由
+    name: 'Comment',
+    component: Comment
   }
 ];
 
 const router = createRouter({
-  history: createWebHistory(process.env.BASE_URL),
+  history: createWebHistory(),
   routes
 });
 

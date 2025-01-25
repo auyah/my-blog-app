@@ -51,9 +51,10 @@
           if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
           const data = await response.json();
           if (data.message === 'Login successful') {
-            // 登录成功后可以通过事件总线或Vuex来传递登录状态和用户ID
-            // 这里简单示例，实际项目中建议使用更合适的状态管理方式
-            this.$emit('login-success', data.user_id);
+            loggedIn.value = true;
+            currentUserId.value = data.user_id;
+            console.log('登录状态已更新：', loggedIn.value, currentUserId.value); // 添加调试信息
+            fetchPosts();
           } else {
             console.error('Login failed:', data.message);
           }
